@@ -13,14 +13,14 @@ const Player = (n, c) => {
 
   const move = (direction) => {
     if (direction === 't') {
-        y = y - 1
-      } else if (direction === 'b') {
-          y = y + 1
-        } else if (direction === 'l') {
-          x = x - 1
-        } else if (direction === 'r') {
-          x = x + 1
-        }
+      y--
+    } else if (direction === 'b') {
+      y++
+    } else if (direction === 'l') {
+      x--
+    } else if (direction === 'r') {
+      x++
+    }
   }
 
   const draw = (clr, x, y) => {
@@ -32,6 +32,6 @@ const Player = (n, c) => {
   return {
     move: () => move(direction),
     draw: () => draw(clr, x, y),
-    setDirection: (d) => setDirection(d)
+    setDirection: (d) => setDirection(d),
   }
 }
