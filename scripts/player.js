@@ -1,7 +1,14 @@
 'use strict'
-
 /* eslint  no-undef: 0, no-unused-vars: 0 */
 
+/**
+ * Represent a player
+ * @constructor
+ * @param {string} n name
+ * @param {color} c color
+ * @param {number} posX x position
+ * @param {number} posY y position
+ */
 const Player = (n, c, posX, posY) => {
   const name = n
   const clr = c
@@ -9,10 +16,18 @@ const Player = (n, c, posX, posY) => {
   let y = posY
   let direction = ''
 
+  /**
+   * Set the direction
+   * @param {string} direction the player direction
+   */
   const setDirection = (d) => {
     direction = d
   }
 
+   /**
+   * Move the Player
+   * @param {string} direction the player direction
+   */
   const move = (direction) => {
     if (direction === 't') {
       y -= 5
@@ -25,12 +40,25 @@ const Player = (n, c, posX, posY) => {
     }
   }
 
+  /**
+   * Draw the player
+   * @param {Color} clr color
+   * @param {string} x x position
+   * @param {string} y y position
+   */
   const draw = (clr, x, y) => {
     fill(clr)
     noStroke()
     rect(x, y, 10, 10)
   }
 
+    /**
+   * Check if there is a collistion
+   * @param {string} direction the player direction
+   * @param {string} x x position
+   * @param {string} y y position
+   * @param {color} backgroundColor the background color
+   */
   const checkCollision = (direction, x, y, backgroundColor) => {
     if (direction === 't') {
       if (!isEqual(get(x, y - 1), darkGreyColor.levels) || !isEqual(get(x + 10, y - 1), darkGreyColor.levels)) {
@@ -69,6 +97,11 @@ const Player = (n, c, posX, posY) => {
 
 /* Helper function */
 
+/**
+ * Check if two objects are equal
+ * @param {Object} a the first object
+ * @param {Object} b the second object
+ */
 function isEqual (a, b) {
   const aProps = Object.getOwnPropertyNames(a)
   const bProps = Object.getOwnPropertyNames(b)
