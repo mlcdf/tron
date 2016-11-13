@@ -1,20 +1,6 @@
 'use strict'
 /* eslint  no-undef: 0, no-unused-vars: 0 */
 
-const PLAYER_BLUE_KEYS = {
-  'Z': 'top',
-  'S': 'bottom',
-  'Q': 'left',
-  'D': 'right'
-}
-
-const PLAYER_ORANGE_KEYS = {
-  38: 'top',
-  40: 'bottom',
-  37: 'left',
-  39: 'right'
-}
-
 let bluePlayer
 let orangePlayer
 let orangeColor
@@ -49,13 +35,26 @@ function setup () {
   orangeColor = color(246, 106, 53)
   blueColor = color(24, 202, 230)
   darkGreyColor = color(5, 13, 16)
-
   background(darkGreyColor)
 
   bluePlayer = Player(blueColor, Math.trunc(canvasWidth * 1 / 3), Math.trunc(canvasHeight / 2), 'right')
   orangePlayer = Player(orangeColor, Math.trunc(canvasWidth * 2 / 3), Math.trunc(canvasHeight / 2), 'left')
   bluePlayer.draw()
   orangePlayer.draw()
+
+  bluePlayer.keys = {
+    'Z': 'top',
+    'S': 'bottom',
+    'Q': 'left',
+    'D': 'right'
+  }
+
+  orangePlayer.keys = {
+    38: 'top',
+    40: 'bottom',
+    37: 'left',
+    39: 'right'
+  }
 }
 
 // Called at every frame
@@ -81,11 +80,11 @@ function draw () {
 
 // Called when a key is pressed
 function keyPressed () {
-  if (key in PLAYER_BLUE_KEYS) {
-    bluePlayer.updateDirection(PLAYER_BLUE_KEYS[key])
+  if (key in bluePlayer.keys) {
+    bluePlayer.updateDirection(bluePlayer.keys[key])
   }
 
-  if (keyCode in PLAYER_ORANGE_KEYS) {
-    orangePlayer.updateDirection(PLAYER_ORANGE_KEYS[keyCode])
+  if (keyCode in orangePlayer.keys) {
+    orangePlayer.updateDirection(orangePlayer.keys[keyCode])
   }
 }
