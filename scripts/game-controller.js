@@ -15,8 +15,8 @@ const PLAYER_ORANGE_KEYS = {
   39: 'right'
 }
 
-let blue
-let orange
+let bluePlayer
+let orangePlayer
 let orangeColor
 let blueColor
 let darkGreyColor
@@ -35,7 +35,7 @@ p5.disableFriendlyErrors = true
 
 // Called at startup
 function setup () {
-  createCanvas(800, 600)
+  createCanvas(1280, 720)
   frameRate(60)
 
   orangeColor = color(246, 106, 53)
@@ -44,10 +44,10 @@ function setup () {
 
   background(darkGreyColor)
 
-  blue = Player(blueColor, 266, 300)
-  orange = Player(orangeColor, 533, 300)
-  blue.draw()
-  orange.draw()
+  bluePlayer = Player(blueColor, 266, 300, 'right')
+  orangePlayer = Player(orangeColor, 533, 300, 'left')
+  bluePlayer.draw()
+  orangePlayer.draw()
 }
 
 // Called at every frame
@@ -55,29 +55,29 @@ function draw () {
   if (gameState === state.START_SCREEN) {
     gameState = state.PLAYING
   } else if (gameState === state.PLAYING) {
-    if (blue.checkCollision(darkGreyColor)) {
-      winner = orange
+    if (bluePlayer.checkCollision(darkGreyColor)) {
+      winner = orangePlayer
       gameState = state.FINISHED
-    } else if (orange.checkCollision(darkGreyColor)) {
-      winner = blue
+    } else if (orangePlayer.checkCollision(darkGreyColor)) {
+      winner = bluePlayer
       gameState = state.FINISHED
     }
 
-    blue.draw()
-    orange.draw()
+    bluePlayer.draw()
+    orangePlayer.draw()
 
-    blue.move()
-    orange.move()
+    bluePlayer.move()
+    orangePlayer.move()
   }
 }
 
 // Called when a key is pressed
 function keyPressed () {
   if (key in PLAYER_BLUE_KEYS) {
-    blue.updateDirection(PLAYER_BLUE_KEYS[key])
+    bluePlayer.updateDirection(PLAYER_BLUE_KEYS[key])
   }
 
   if (keyCode in PLAYER_ORANGE_KEYS) {
-    orange.updateDirection(PLAYER_ORANGE_KEYS[keyCode])
+    orangePlayer.updateDirection(PLAYER_ORANGE_KEYS[keyCode])
   }
 }

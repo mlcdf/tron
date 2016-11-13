@@ -5,86 +5,83 @@
  * Represent a player
  * @constructor
  * @param {color} c color
- * @param {number} posX x position
- * @param {number} posY y position
+ * @param {number} x x position
+ * @param {number} y y position
+ * @param {number} d direction
  */
-const Player = (c, posX, posY) => {
-  const clr = c
-  let x = posX
-  let y = posY
-  let direction = ''
+const Player = (c, x, y, d) => {
+  const mColor = c
+  let mX = x
+  let mY = y
+  let mDirection = d
 
   /**
    * Set the direction
    * @param {string} direction the player direction
    */
   const updateDirection = (d) => {
-    if (!(
-        (direction === 'top' && d === 'bottom') ||
-        (direction === 'bottom' && d === 'top') ||
-        (direction === 'left' && d === 'right') ||
-        (direction === 'right' && d === 'left')
-    )) {
-      direction = d
+    if ((['top', 'bottom'].includes(mDirection) && ['left', 'right'].includes(d)) ||
+        (['left', 'right'].includes(mDirection) && ['top', 'bottom'].includes(d))) {
+      mDirection = d
     }
   }
 
    /**
-   * Move the Player
-   * @param {string} direction the player direction
+   * Move the player
+   * @param {string} mDirection the player direction
    */
-  const move = (direction) => {
-    if (direction === 'top') {
-      y -= 5
-    } else if (direction === 'bottom') {
-      y += 5
-    } else if (direction === 'left') {
-      x -= 5
-    } else if (direction === 'right') {
-      x += 5
+  const move = (mDirection) => {
+    if (mDirection === 'top') {
+      mY -= 5
+    } else if (mDirection === 'bottom') {
+      mY += 5
+    } else if (mDirection === 'left') {
+      mX -= 5
+    } else if (mDirection === 'right') {
+      mX += 5
     }
   }
 
   /**
    * Draw the player
-   * @param {Color} clr color
-   * @param {string} x x position
-   * @param {string} y y position
+   * @param {Color} mColor color
+   * @param {string} mX mX position
+   * @param {string} mY mY position
    */
-  const draw = (clr, x, y) => {
-    fill(clr)
+  const draw = (mColor, mX, mY) => {
+    fill(mColor)
     noStroke()
-    rect(x, y, 10, 10)
+    rect(mX, mY, 10, 10)
   }
 
     /**
    * Check if there is a collistion
-   * @param {string} direction the player direction
-   * @param {string} x x position
-   * @param {string} y y position
+   * @param {string} mDirection the player direction
+   * @param {string} mX mX position
+   * @param {string} mY mY position
    * @param {color} backgroundColor the background color
    */
-  const checkCollision = (direction, x, y, backgroundColor) => {
-    if (direction === 'top') {
-      if (!isEqual(get(x, y - 1), darkGreyColor.levels) || !isEqual(get(x + 10, y - 1), darkGreyColor.levels)) {
+  const checkCollision = (mDirection, mX, mY, backgroundColor) => {
+    if (mDirection === 'top') {
+      if (!isEqual(get(mX, mY - 1), darkGreyColor.levels) || !isEqual(get(mX + 10, mY - 1), darkGreyColor.levels)) {
         return true
       }
     }
 
-    if (direction === 'bottom') {
-      if (!isEqual(get(x, y + 10), darkGreyColor.levels) || !isEqual(get(x + 10, y + 10), darkGreyColor.levels)) {
+    if (mDirection === 'bottom') {
+      if (!isEqual(get(mX, mY + 10), darkGreyColor.levels) || !isEqual(get(mX + 10, mY + 10), darkGreyColor.levels)) {
         return true
       }
     }
 
-    if (direction === 'left') {
-      if (!isEqual(get(x - 1, y), darkGreyColor.levels) || !isEqual(get(x - 1, y + 10), darkGreyColor.levels)) {
+    if (mDirection === 'left') {
+      if (!isEqual(get(mX - 1, mY), darkGreyColor.levels) || !isEqual(get(mX - 1, mY + 10), darkGreyColor.levels)) {
         return true
       }
     }
 
-    if (direction === 'right') {
-      if (!isEqual(get(x + 10, y), darkGreyColor.levels) || !isEqual(get(x + 10, y + 10), darkGreyColor.levels)) {
+    if (mDirection === 'right') {
+      if (!isEqual(get(mX + 10, mY), darkGreyColor.levels) || !isEqual(get(mX + 10, mY + 10), darkGreyColor.levels)) {
         return true
       }
     }
@@ -93,9 +90,9 @@ const Player = (c, posX, posY) => {
   }
 
   return {
-    move: () => move(direction),
-    draw: () => draw(clr, x, y),
-    checkCollision: (otherPlayer) => checkCollision(direction, x, y, otherPlayer),
+    move: () => move(mDirection),
+    draw: () => draw(mColor, mX, mY),
+    checkCollision: (otherPlayer) => checkCollision(mDirection, mX, mY, otherPlayer),
     updateDirection: (d) => updateDirection(d)
   }
 }
