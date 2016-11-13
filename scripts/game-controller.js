@@ -1,10 +1,14 @@
 'use strict'
+/* eslint  no-undef: 0, no-unused-vars: 0 */
 
 let blue
 let orange
 let orangeColor
 let blueColor
 let darkGreyColor
+
+p5.disableFriendlyErrors = true
+
 // Called at startup
 function setup () {
   createCanvas(800, 600)
@@ -16,8 +20,8 @@ function setup () {
 
   background(darkGreyColor)
 
-  blue = Player('Blue', blueColor)
-  orange = Player('Orange', orangeColor)
+  blue = Player('Blue', blueColor, 266, 300)
+  orange = Player('Orange', orangeColor, 533, 300)
   blue.draw()
   orange.draw()
 }
@@ -29,6 +33,14 @@ function draw () {
 
   blue.move()
   orange.move()
+
+  if (blue.checkCollision(darkGreyColor)) {
+    console.log('Collision')
+  }
+
+  if (orange.checkCollision(darkGreyColor)) {
+    console.log('Collision')
+  }
 }
 
 // Called when a key is pressed
