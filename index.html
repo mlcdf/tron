@@ -6,17 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
       body {
-        height: 100vh;
+        margin: 0;
+        font-family:
+          monaco, menlo, /* MacOS and iOS */
+          'Consolas', /* Windows */
+          'Fira Mono', /* Firefox OS */
+          roboto mono, noto mono, /* Google stuff */
+          'Droid Sans', /* Old Google stuff */
+          'DejaVu Sans Mono', cousine, ubuntu mono, /* Linux stuff */
+          'Courrier', /* Windows stuff */
+          'Liberation Mono', /* Linux */
+          monospace; /* Everything else */
+      }
+      header  {
+        text-align: center
+      }
+       main {
+         height: 100vh;
         margin: 0;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
       }
+
+      #sketch-holder canvas {
+        border-radius: 64px;
+      }
+
     </style>
   </head>
   <body>
-
+  <header>
+    <h1>/* Tron */</h1>
+  </header>
+  <main>
+    <div id="sketch-holder">
+      <!-- Our sketch will go here! -->
+    </div>
+  </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js"></script>
   <script src="scripts/player.js"></script>
   <script src="scripts/game-controller.js"></script>
