@@ -32,13 +32,13 @@ const Player = (c, x, y, d) => {
    */
   const move = (mDirection) => {
     if (mDirection === 'top') {
-      mY -= 5
+      mY -= 2
     } else if (mDirection === 'bottom') {
-      mY += 5
+      mY += 2
     } else if (mDirection === 'left') {
-      mX -= 5
+      mX -= 2
     } else if (mDirection === 'right') {
-      mX += 5
+      mX += 2
     }
   }
 
