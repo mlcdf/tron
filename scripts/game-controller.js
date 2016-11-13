@@ -1,6 +1,20 @@
 'use strict'
 /* eslint  no-undef: 0, no-unused-vars: 0 */
 
+const PLAYER_BLUE_KEYS = {
+  'Z': 'top',
+  'S': 'bottom',
+  'Q': 'left',
+  'D': 'right'
+}
+
+const PLAYER_ORANGE_KEYS = {
+  38: 'top',
+  40: 'bottom',
+  37: 'left',
+  39: 'right'
+}
+
 let blue
 let orange
 let orangeColor
@@ -59,23 +73,11 @@ function draw () {
 
 // Called when a key is pressed
 function keyPressed () {
-  if (key === 'Z') {
-    blue.setDirection('t')
-  } else if (key === 'S') {
-    blue.setDirection('b')
-  } else if (key === 'Q') {
-    blue.setDirection('l')
-  } else if (key === 'D') {
-    blue.setDirection('r')
+  if (key in PLAYER_BLUE_KEYS) {
+    blue.updateDirection(PLAYER_BLUE_KEYS[key])
   }
 
-  if (keyCode === UP_ARROW) {
-    orange.setDirection('t')
-  } else if (keyCode === DOWN_ARROW) {
-    orange.setDirection('b')
-  } else if (keyCode === LEFT_ARROW) {
-    orange.setDirection('l')
-  } else if (keyCode === RIGHT_ARROW) {
-    orange.setDirection('r')
+  if (keyCode in PLAYER_ORANGE_KEYS) {
+    orange.updateDirection(PLAYER_ORANGE_KEYS[keyCode])
   }
 }

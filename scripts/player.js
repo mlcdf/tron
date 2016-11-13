@@ -18,8 +18,15 @@ const Player = (c, posX, posY) => {
    * Set the direction
    * @param {string} direction the player direction
    */
-  const setDirection = (d) => {
-    direction = d
+  const updateDirection = (d) => {
+    if (!(
+        (direction === 'top' && d === 'bottom') ||
+        (direction === 'bottom' && d === 'top') ||
+        (direction === 'left' && d === 'right') ||
+        (direction === 'right' && d === 'left')
+    )) {
+      direction = d
+    }
   }
 
    /**
@@ -27,13 +34,13 @@ const Player = (c, posX, posY) => {
    * @param {string} direction the player direction
    */
   const move = (direction) => {
-    if (direction === 't') {
+    if (direction === 'top') {
       y -= 5
-    } else if (direction === 'b') {
+    } else if (direction === 'bottom') {
       y += 5
-    } else if (direction === 'l') {
+    } else if (direction === 'left') {
       x -= 5
-    } else if (direction === 'r') {
+    } else if (direction === 'right') {
       x += 5
     }
   }
@@ -58,25 +65,25 @@ const Player = (c, posX, posY) => {
    * @param {color} backgroundColor the background color
    */
   const checkCollision = (direction, x, y, backgroundColor) => {
-    if (direction === 't') {
+    if (direction === 'top') {
       if (!isEqual(get(x, y - 1), darkGreyColor.levels) || !isEqual(get(x + 10, y - 1), darkGreyColor.levels)) {
         return true
       }
     }
 
-    if (direction === 'b') {
+    if (direction === 'bottom') {
       if (!isEqual(get(x, y + 10), darkGreyColor.levels) || !isEqual(get(x + 10, y + 10), darkGreyColor.levels)) {
         return true
       }
     }
 
-    if (direction === 'l') {
+    if (direction === 'left') {
       if (!isEqual(get(x - 1, y), darkGreyColor.levels) || !isEqual(get(x - 1, y + 10), darkGreyColor.levels)) {
         return true
       }
     }
 
-    if (direction === 'r') {
+    if (direction === 'right') {
       if (!isEqual(get(x + 10, y), darkGreyColor.levels) || !isEqual(get(x + 10, y + 10), darkGreyColor.levels)) {
         return true
       }
@@ -89,7 +96,7 @@ const Player = (c, posX, posY) => {
     move: () => move(direction),
     draw: () => draw(clr, x, y),
     checkCollision: (otherPlayer) => checkCollision(direction, x, y, otherPlayer),
-    setDirection: (d) => setDirection(d)
+    updateDirection: (d) => updateDirection(d)
   }
 }
 
