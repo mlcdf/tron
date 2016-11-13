@@ -7,6 +7,16 @@ let orangeColor
 let blueColor
 let darkGreyColor
 
+let winner
+
+const state = {
+  START_SCREEN: 0,
+  PLAYING: 1,
+  FINISHED: 2
+}
+
+let gameState = state.START_SCREEN
+
 p5.disableFriendlyErrors = true
 
 // Called at startup
@@ -28,18 +38,22 @@ function setup () {
 
 // Called at every frame
 function draw () {
-  blue.draw()
-  orange.draw()
+  if (gameState === state.START_SCREEN) {
+    gameState = state.PLAYING
+  } else if (gameState === state.PLAYING) {
+    if (blue.checkCollision(darkGreyColor)) {
+      winner = orange
+      gameState = state.FINISHED
+    } else if (orange.checkCollision(darkGreyColor)) {
+      winner = blue
+      gameState = state.FINISHED
+    }
 
-  blue.move()
-  orange.move()
+    blue.draw()
+    orange.draw()
 
-  if (blue.checkCollision(darkGreyColor)) {
-    console.log('Collision')
-  }
-
-  if (orange.checkCollision(darkGreyColor)) {
-    console.log('Collision')
+    blue.move()
+    orange.move()
   }
 }
 
