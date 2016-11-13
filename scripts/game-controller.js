@@ -31,11 +31,19 @@ const state = {
 
 let gameState = state.START_SCREEN
 
+const canvasWidth = 960
+const canvasHeight = 720
+
 p5.disableFriendlyErrors = true
 
 // Called at startup
 function setup () {
-  createCanvas(1280, 720)
+  const canvas = createCanvas(canvasWidth, canvasHeight)
+  canvas.parent('sketch-holder')
+
+  let canvasDomEl = document.getElementById('defaultCanvas0')
+  canvasDomEl.focus()
+
   frameRate(60)
 
   orangeColor = color(246, 106, 53)
@@ -44,8 +52,8 @@ function setup () {
 
   background(darkGreyColor)
 
-  bluePlayer = Player(blueColor, 266, 300, 'right')
-  orangePlayer = Player(orangeColor, 533, 300, 'left')
+  bluePlayer = Player(blueColor, Math.trunc(canvasWidth * 1 / 3), Math.trunc(canvasHeight / 2), 'right')
+  orangePlayer = Player(orangeColor, Math.trunc(canvasWidth * 2 / 3), Math.trunc(canvasHeight / 2), 'left')
   bluePlayer.draw()
   orangePlayer.draw()
 }
