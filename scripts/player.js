@@ -4,13 +4,11 @@
 /**
  * Represent a player
  * @constructor
- * @param {string} n name
  * @param {color} c color
  * @param {number} posX x position
  * @param {number} posY y position
  */
-const Player = (n, c, posX, posY) => {
-  const name = n
+const Player = (c, posX, posY) => {
   const clr = c
   let x = posX
   let y = posY

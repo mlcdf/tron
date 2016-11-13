@@ -30,8 +30,8 @@ function setup () {
 
   background(darkGreyColor)
 
-  blue = Player('Blue', blueColor, 266, 300)
-  orange = Player('Orange', orangeColor, 533, 300)
+  blue = Player(blueColor, 266, 300)
+  orange = Player(orangeColor, 533, 300)
   blue.draw()
   orange.draw()
 }
