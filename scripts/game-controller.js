@@ -37,10 +37,19 @@ function setup () {
   darkGreyColor = color(5, 13, 16)
   background(darkGreyColor)
 
-  bluePlayer = Player(blueColor, Math.trunc(canvasWidth * 1 / 3), Math.trunc(canvasHeight / 2), 'right')
-  orangePlayer = Player(orangeColor, Math.trunc(canvasWidth * 2 / 3), Math.trunc(canvasHeight / 2), 'left')
-  bluePlayer.draw()
-  orangePlayer.draw()
+  bluePlayer = Player(
+    blueColor,
+    Math.trunc(canvasWidth * 1 / 3),
+    Math.trunc(canvasHeight / 2),
+    'right'
+  )
+
+  orangePlayer = Player(
+    orangeColor,
+    Math.trunc(canvasWidth * 2 / 3),
+    Math.trunc(canvasHeight / 2),
+    'left'
+  )
 
   bluePlayer.keys = {
     'Z': 'top',
@@ -55,6 +64,10 @@ function setup () {
     37: 'left',
     39: 'right'
   }
+
+  bluePlayer.draw()
+  orangePlayer.draw()
+
 }
 
 // Called at every frame

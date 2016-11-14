@@ -63,25 +63,29 @@ const Player = (c, x, y, d) => {
    */
   const checkCollision = (mDirection, mX, mY, backgroundColor) => {
     if (mDirection === 'top') {
-      if (!isEqual(get(mX, mY - 1), darkGreyColor.levels) || !isEqual(get(mX + 10, mY - 1), darkGreyColor.levels)) {
+      if (!isEqual(get(mX, mY - 1), darkGreyColor.levels) ||
+          !isEqual(get(mX + 10, mY - 1), darkGreyColor.levels)) {
         return true
       }
     }
 
     if (mDirection === 'bottom') {
-      if (!isEqual(get(mX, mY + 10), darkGreyColor.levels) || !isEqual(get(mX + 10, mY + 10), darkGreyColor.levels)) {
+      if (!isEqual(get(mX, mY + 10), darkGreyColor.levels) ||
+          !isEqual(get(mX + 10, mY + 10), darkGreyColor.levels)) {
         return true
       }
     }
 
     if (mDirection === 'left') {
-      if (!isEqual(get(mX - 1, mY), darkGreyColor.levels) || !isEqual(get(mX - 1, mY + 10), darkGreyColor.levels)) {
+      if (!isEqual(get(mX - 1, mY), darkGreyColor.levels) ||
+          !isEqual(get(mX - 1, mY + 10), darkGreyColor.levels)) {
         return true
       }
     }
 
     if (mDirection === 'right') {
-      if (!isEqual(get(mX + 10, mY), darkGreyColor.levels) || !isEqual(get(mX + 10, mY + 10), darkGreyColor.levels)) {
+      if (!isEqual(get(mX + 10, mY), darkGreyColor.levels) ||
+          !isEqual(get(mX + 10, mY + 10), darkGreyColor.levels)) {
         return true
       }
     }
