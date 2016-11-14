@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "test": "eslint scripts/*.js"
+  },
   "devDependencies": {
     "ava": "^0.16.0",
     "eslint": "^3.8.1",
