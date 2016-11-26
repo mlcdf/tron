@@ -67,7 +67,6 @@ function setup () {
 
   bluePlayer.draw()
   orangePlayer.draw()
-
 }
 
 // Called at every frame
