@@ -14,10 +14,10 @@ cd tron && npm install
 npm start
 ```
 
-  ### Lint
-  ```bash
-  npm run lint
-  ```
+### Lint
+```bash
+npm run lint
+```
 
 ## Contributing
 
