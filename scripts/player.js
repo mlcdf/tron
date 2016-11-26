@@ -11,6 +11,8 @@
  */
 const Player = (c, x, y, d) => {
   const mColor = c
+  const mSize = 10
+  const speed = 2
   let mX = x
   let mY = y
   let mDirection = d
@@ -32,13 +34,13 @@ const Player = (c, x, y, d) => {
    */
   const move = (mDirection) => {
     if (mDirection === 'top') {
-      mY -= 2
+      mY -= 1 * speed
     } else if (mDirection === 'bottom') {
-      mY += 2
+      mY += 1 * speed
     } else if (mDirection === 'left') {
-      mX -= 2
+      mX -= 1 * speed
     } else if (mDirection === 'right') {
-      mX += 2
+      mX += 1 * speed
     }
   }
 
@@ -51,7 +53,7 @@ const Player = (c, x, y, d) => {
   const draw = (mColor, mX, mY) => {
     fill(mColor)
     noStroke()
-    rect(mX, mY, 10, 10)
+    rect(mX, mY, mSize, mSize)
   }
 
     /**
@@ -64,28 +66,28 @@ const Player = (c, x, y, d) => {
   const checkCollision = (mDirection, mX, mY, backgroundColor) => {
     if (mDirection === 'top') {
       if (!isEqual(get(mX, mY - 1), darkGreyColor.levels) ||
-          !isEqual(get(mX + 10, mY - 1), darkGreyColor.levels)) {
+          !isEqual(get(mX + mSize, mY - 1), darkGreyColor.levels)) {
         return true
       }
     }
 
     if (mDirection === 'bottom') {
-      if (!isEqual(get(mX, mY + 10), darkGreyColor.levels) ||
-          !isEqual(get(mX + 10, mY + 10), darkGreyColor.levels)) {
+      if (!isEqual(get(mX, mY + mSize), darkGreyColor.levels) ||
+          !isEqual(get(mX + mSize, mY + mSize), darkGreyColor.levels)) {
         return true
       }
     }
 
     if (mDirection === 'left') {
       if (!isEqual(get(mX - 1, mY), darkGreyColor.levels) ||
-          !isEqual(get(mX - 1, mY + 10), darkGreyColor.levels)) {
+          !isEqual(get(mX - 1, mY + mSize), darkGreyColor.levels)) {
         return true
       }
     }
 
     if (mDirection === 'right') {
-      if (!isEqual(get(mX + 10, mY), darkGreyColor.levels) ||
-          !isEqual(get(mX + 10, mY + 10), darkGreyColor.levels)) {
+      if (!isEqual(get(mX + mSize, mY), darkGreyColor.levels) ||
+          !isEqual(get(mX + mSize, mY + mSize), darkGreyColor.levels)) {
         return true
       }
     }
