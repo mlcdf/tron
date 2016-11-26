@@ -27,7 +27,7 @@ function setup () {
   const canvas = createCanvas(canvasWidth, canvasHeight)
   canvas.parent('sketch-holder')
 
-  let canvasDomEl = document.getElementById('defaultCanvas0')
+  const canvasDomEl = document.getElementById('defaultCanvas0')
   canvasDomEl.focus()
 
   frameRate(60)
