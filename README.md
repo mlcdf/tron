@@ -1,27 +1,9 @@
 # Tron
 > Play Tron in your browser!
 
-## Dev
+# Usage
 
-### Install
-
-```bash
-git clone https://github.com/mlcdf/tron.git
-cd tron && npm install
-```
-### Run
-```bash
-npm start
-```
-
-### Lint
-```bash
-npm run lint
-```
-
-## Contributing
-
-Remarks, advices & contributions are welcome. Feel free to open an issue or submit a pull request.
+Clone this repository and open the index.html files in your browser.
 
 ## License
 
