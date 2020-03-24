@@ -3,7 +3,7 @@
 
 # Usage
 
-Clone this repository and open the index.html files in your browser.
+Clone this repository and open the `index.html` file in your browser.
 
 ## License
 
